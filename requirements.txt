@@ -1,0 +1,4 @@
+Flask
+python-mpd2
+Werkzeug
+Flask-Limiter

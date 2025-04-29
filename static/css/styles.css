@@ -1,0 +1,316 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --background-color: #f5f7fa;
+    --text-color: #333;
+    --button-hover: #2980b9;
+    --error-color: #e74c3c;
+    --success-color: #2ecc71;
+    --light-gray: #eee;
+    --transition-speed: 0.3s;
+}
+
+/* Base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    color: var(--secondary-color);
+}
+
+/* Section styling */
+.section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: box-shadow var(--transition-speed);
+}
+
+.section:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.now-playing {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    border-radius: 8px;
+}
+
+.now-playing h2 {
+    color: white;
+    margin-top: 0;
+}
+
+/* Progress bar styling */
+.progress-bar-container {
+    margin: 15px 0;
+}
+
+.progress-bar {
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background-color: white;
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.time-display {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Controls styling */
+.controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button.active {
+    background-color: var(--secondary-color);
+}
+
+button i {
+    margin-right: 5px;
+}
+
+/* Controls for smaller screens */
+.controls button:first-child, 
+.controls button:nth-child(2),
+.controls button:nth-child(3),
+.controls button:nth-child(4),
+.controls button:nth-child(5) {
+    padding: 10px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Volume control styling */
+.volume-control {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+    gap: 10px;
+}
+
+.volume-control i {
+    font-size: 18px;
+}
+
+input[type="range"] {
+    flex-grow: 1;
+    max-width: 200px;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+/* Playlist and search results styling */
+#playlist, #search-results {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#playlist li, #search-results li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--light-gray);
+    transition: background-color var(--transition-speed);
+}
+
+#playlist li:hover, #search-results li:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+#playlist li:last-child, #search-results li:last-child {
+    border-bottom: none;
+}
+
+.track-info {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 10px;
+}
+
+/* Search bar styling */
+.search-bar {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#search-query {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px 0 0 6px;
+    transition: border-color var(--transition-speed);
+}
+
+#search-query:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+#search {
+    border-radius: 0 6px 6px 0;
+}
+
+/* Notification styling */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: var(--error-color);
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+    z-index: 1000;
+    transition: background-color var(--transition-speed);
+    max-width: 300px;
+}
+
+/* Loading state styling */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Animation for playback */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.now-playing.active {
+    animation: pulse 2s infinite;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 600px) {
+    .controls {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    
+    .volume-control {
+        flex-direction: column;
+    }
+    
+    .volume-control i {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    input[type="range"] {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .section {
+        padding: 15px;
+    }
+    
+    #playlist, #search-results {
+        max-height: 200px;
+    }
+}

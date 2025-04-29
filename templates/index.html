@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web interface for controlling MPD (Music Player Daemon)">
+    <title>Music Player Remote</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Music Player Remote</h1>
+        </header>
+        
+        <div class="section now-playing">
+            <h2>Now Playing</h2>
+            <p id="current-track">No track playing</p>
+            <p id="status">Status: Unknown</p>
+            
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <div class="time-display">
+                    <span id="current-time">0:00</span> / 
+                    <span id="total-time">0:00</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="previous" title="Previous"><i class="fas fa-step-backward"></i><span class="sr-only">Previous</span></button>
+                <button id="play" title="Play"><i class="fas fa-play"></i><span class="sr-only">Play</span></button>
+                <button id="pause" title="Pause"><i class="fas fa-pause"></i><span class="sr-only">Pause</span></button>
+                <button id="stop" title="Stop"><i class="fas fa-stop"></i><span class="sr-only">Stop</span></button>
+                <button id="next" title="Next"><i class="fas fa-step-forward"></i><span class="sr-only">Next</span></button>
+                <button id="random" title="Toggle Shuffle"><i class="fas fa-random"></i> <span>Shuffle: Off</span></button>
+                <button id="repeat" title="Toggle Repeat"><i class="fas fa-redo"></i> <span>Repeat: Off</span></button>
+            </div>
+            
+            <div class="volume-control">
+                <i class="fas fa-volume-up" id="volume-icon"></i>
+                <input type="range" id="volume" min="0" max="100" value="50" aria-label="Volume control">
+                <span id="volume-value">50%</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Playlist</h2>
+            <div id="playlist-container">
+                <ul id="playlist">
+                    <li>Loading playlist...</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Search Tracks</h2>
+            <div class="search-bar">
+                <input type="text" id="search-query" placeholder="Search for tracks...">
+                <button id="search"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div id="search-results-container">
+                <ul id="search-results"></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification" role="alert" aria-live="assertive"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
