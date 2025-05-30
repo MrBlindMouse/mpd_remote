@@ -1,3 +1,7 @@
+# Notice!
+
+This has been 'vibe coded'. Reworking to make sure everything is stable and user friendly will start soon.
+
 # MPD Web Remote
 
 A responsive web interface for controlling the Music Player Daemon (MPD) from any device. This application provides a modern, feature-rich web client that lets you manage your music playback through an intuitive UI.
